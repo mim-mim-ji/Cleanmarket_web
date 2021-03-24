@@ -1,5 +1,0 @@
-package com.spring.cleanmarket.member.repository;
-
-public inteface IMemberMapper {
-
-}
