@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;CleanMarket/src/main/webapp/WEB-INF/views/include/location.jsp&apos; to &apos;location_modal.jsp&apos;" description="Rename resource &apos;location.jsp&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/main/webapp/WEB-INF/views/include/location.jsp" name="location_modal.jsp" stamp="1616203393209" updateReferences="true"/>
+</session>

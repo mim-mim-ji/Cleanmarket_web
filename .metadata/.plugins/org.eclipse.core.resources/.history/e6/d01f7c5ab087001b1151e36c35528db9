@@ -1,0 +1,22 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+   
+    
+<!-- 검색 Modal-->
+<div class="modal fade" id="search">
+	<div class="modal-dialog">
+		<div class="modal-content">
+
+			<!-- Modal body -->
+			<div class="modal-body">				
+					
+				<form action="#" name="search" style="background-color: transparent;">
+					<input type="text" value="검색">
+					<input type="submit" value="확인">
+				</form>
+			</div>
+		</div>
+	</div>
+</div>

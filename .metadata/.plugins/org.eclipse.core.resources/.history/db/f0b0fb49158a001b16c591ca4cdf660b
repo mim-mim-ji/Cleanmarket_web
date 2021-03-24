@@ -1,0 +1,14 @@
+package com.spring.cleanmarket.item.service;
+
+import com.spring.cleanmarket.item.model.ItemVO;
+import com.spring.cleanmarket.member.model.MemberVO;
+
+public interface IItemService {
+
+	//상품 등록 기능
+	void write(ItemVO item);
+	
+	//상품 정보 조회 기능
+	ItemVO selectOne(String itemNo);
+	
+}

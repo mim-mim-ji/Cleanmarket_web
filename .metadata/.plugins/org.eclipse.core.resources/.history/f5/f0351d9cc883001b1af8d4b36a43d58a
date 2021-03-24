@@ -1,0 +1,19 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<jsp:include page="../include/header.jsp" />
+    
+<!-- 회원가입 유형 선택 -->
+
+<br>
+<br>
+	<form action="<c:url value='/join_agree'/> ">
+		<div id="join_select" align="center">
+			<h2>회원가입하기</h2>
+			<input type="submit" name="type" id=general value="일반 회원">일반회원
+			<input type="submit" name="type" id=store value="가맹점주 회원">			
+		</div>
+	</form>
+
+<jsp:include page="../include/footer.jsp" />

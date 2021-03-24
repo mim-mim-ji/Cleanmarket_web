@@ -1,0 +1,372 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
+<style>
+section#content ul li {
+	display: inline-block;
+	margin: 10px;
+}
+
+section#content div.goodsThumb img {
+	width: 200px;
+	height: 200px;
+}
+
+section#content div.goodsName {
+	padding: 10px 0;
+	text-align: center;
+}
+
+section#content div.goodsName a {
+	color: #000;
+}
+
+#w2021022446593bc0c646f .thumb-row {
+	margin: 0 -5px;
+	clear: both;
+}
+
+#w2021022446593bc0c646f .thumb-row .shop-item {
+	padding: 0 5px;
+}
+
+#w2021022446593bc0c646f .thumb-fluid.show_rendering .shop-item a>img {
+	image-rendering: -webkit-optimize-contrast;
+}
+
+#w2021022446593bc0c646f .shop-item .shop-item-thumb img {
+	border: 0px solid;
+}
+
+#w2021022446593bc0c646f .thumb-row .shop-item.off {
+	padding: 5px !important;
+}
+</style>
+
+<style>
+header.masthead {
+	display: none;
+}
+
+.btn-orange {
+	background-color: orange;
+	color: white;
+}
+
+.btn-izone {
+	background-color: #643691;
+	color: white;
+}
+
+.page-active {
+	background-color: #643691;
+}
+</style>
+
+<br>
+
+<div>
+	<div doz_type="row" doz_grid="12" class="doz_row">
+		<div class="text-table ">
+			<div>
+				<h5 style="text-align: left;">방금 올라온 물품</h5>
+			</div>
+		</div>
+	</div>
+
+
+	<div class="container">
+		<div class="shop-content widget">
+			<div class="shop-grid">
+				<div class="thumb-fluid _item_container show_rendering ">
+					<div class="shop-tools clearfix" style="display:">
+						<div class="inline-blocked float_l">전체</div>
+						<div class="down-btn" style="display:">
+							<select class="form-control" name="deliv_option_type"
+								onchange="document.location.href = encodeURI('/about/?sort='+$(this).val())"
+								title="정렬 바꾸기">
+								<option value="recent" selected>등록순</option>
+								<option value="like">인기순</option>
+								<option value="min_price">낮은가격순</option>
+								<option value="max_price">높은가격순</option>
+								<option value="comment">상품평 많은순</option>
+								<option value="abc">이름순</option>
+								<option value="descabc">이름역순</option>
+							</select>
+						</div>
+					</div>
+
+					<div class="shop-item _shop_item"
+						style="width: 200px; padding: 0px 5px; height: 200px;">
+						<div class="item-wrap" style="position: relative;">
+							<a href="#" class="_fade_link shop-item-thumb hover_img_none">
+								<img
+								src="https://cdn.imweb.me/thumbnail/20161229/586468cb9e57e.jpg">
+							</a>
+						</div>
+						<div class="item-detail" style="">
+							<div class="item-pay">
+								<h2 style="display:">
+									<a class="_fade_link" href="/about/?idx=10">The Vermonter
+										Monogram Engraving</a>
+								</h2>
+								<div class="item-pay-detail">
+									<p class="pay" style="">44,000원</p>
+								</div>
+								<div class="ns-icon clearfix">
+									<!--<span class="new bg-brand">NEW</span>-->
+								</div>
+							</div>
+							<div class="item-icon">
+								<span><span><i class="icon-heart"></i> 0</span></span>
+							</div>
+						</div>
+					</div>
+					<br>
+
+
+					<div class="shop-item _shop_item"
+						style="width: 197px; padding: 0px 5px; height: auto;">
+						<div class="item-wrap" style="position: relative;">
+							<a href="/about/?idx=10"
+								class="_fade_link shop-item-thumb hover_img_none"> <img
+								data-prodcode="s2021022440198bbc56783" alt=""
+								src="https://cdn.imweb.me/thumbnail/20161229/586468cb9e57e.jpg"
+								class="_org_img org_img _lazy_img"
+								data-original="https://cdn.imweb.me/thumbnail/20161229/586468cb9e57e.jpg"
+								data-src="https://cdn.imweb.me/thumbnail/20161229/586468cb9e57e.jpg">
+								<div class="item-overlay">
+									<div class="item-pay">
+										<div>
+											<h2>The Vermonter Monogram Engraving</h2>
+											<p class="pay no-margin" style="">44,000원</p>
+											<div class="ns-icon clearfix">
+												<!--<span class="new bg-brand">NEW</span>-->
+											</div>
+										</div>
+									</div>
+								</div>
+							</a>
+						</div>
+						<div class="item-detail" style="">
+							<div class="item-pay">
+								<h2 style="display:">
+									<a class="_fade_link" href="/about/?idx=10">The Vermonter
+										Monogram Engraving</a>
+								</h2>
+								<div class="item-pay-detail">
+									<p class="pay" style="">44,000원</p>
+								</div>
+								<div class="ns-icon clearfix">
+									<!--<span class="new bg-brand">NEW</span>-->
+								</div>
+							</div>
+							<div class="item-icon">
+								<span><span><i class="icon-heart"></i> 0</span></span>
+							</div>
+						</div>
+					</div>
+
+					<div class="shop-item _shop_item"
+						style="width: 197px; padding: 0px 5px; height: auto;">
+						<div class="item-wrap" style="position: relative;">
+							<a href="/about/?idx=9"
+								class="_fade_link shop-item-thumb hover_img_none"> <img
+								data-prodcode="s20210224a2fca1a7d5b0b" alt=""
+								src="https://cdn.imweb.me/thumbnail/20161229/586468cc89866.jpg"
+								class="_org_img org_img _lazy_img"
+								data-original="https://cdn.imweb.me/thumbnail/20161229/586468cc89866.jpg"
+								data-src="https://cdn.imweb.me/thumbnail/20161229/586468cc89866.jpg">
+								<div class="item-overlay">
+									<div class="item-pay">
+										<div>
+											<h2>Classic Monogram Engraving</h2>
+											<p class="pay no-margin" style="">44,000원</p>
+											<div class="ns-icon clearfix">
+												<!--<span class="new bg-brand">NEW</span>-->
+											</div>
+										</div>
+									</div>
+								</div>
+							</a>
+						</div>
+						<div class="item-detail" style="">
+							<div class="item-pay">
+								<h2 style="display:">
+									<a class="_fade_link" href="/about/?idx=9">Classic Monogram
+										Engraving</a>
+								</h2>
+								<div class="item-pay-detail">
+									<p class="pay" style="">44,000원</p>
+								</div>
+								<div class="ns-icon clearfix">
+									<!--<span class="new bg-brand">NEW</span>-->
+								</div>
+							</div>
+							<div class="item-icon">
+								<span><span><i class="icon-heart"></i> 0</span></span>
+							</div>
+						</div>
+					</div>
+					<div class="shop-item _shop_item"
+						style="width: 197px; padding: 0px 5px; height: auto;">
+						<div class="item-wrap" style="position: relative;">
+							<a href="/about/?idx=8"
+								class="_fade_link shop-item-thumb hover_img_none"> <img
+								data-prodcode="s20210224ce7685f050d2b" alt=""
+								src="https://cdn.imweb.me/thumbnail/20161229/586468cd53e74.jpg"
+								class="_org_img org_img _lazy_img"
+								data-original="https://cdn.imweb.me/thumbnail/20161229/586468cd53e74.jpg"
+								data-src="https://cdn.imweb.me/thumbnail/20161229/586468cd53e74.jpg">
+								<div class="item-overlay">
+									<div class="item-pay">
+										<div>
+											<h2>Traditional Monogram Engraving</h2>
+											<p class="pay no-margin" style="">44,000원</p>
+											<div class="ns-icon clearfix">
+												<!--<span class="new bg-brand">NEW</span>-->
+											</div>
+										</div>
+									</div>
+								</div>
+							</a>
+						</div>
+						<div class="item-detail" style="">
+							<div class="item-pay">
+								<h2 style="display:">
+									<a class="_fade_link" href="/about/?idx=8">Traditional
+										Monogram Engraving</a>
+								</h2>
+								<div class="item-pay-detail">
+									<p class="pay" style="">44,000원</p>
+								</div>
+								<div class="ns-icon clearfix">
+									<!--<span class="new bg-brand">NEW</span>-->
+								</div>
+							</div>
+							<div class="item-icon">
+								<span><span><i class="icon-heart"></i> 0</span></span>
+							</div>
+						</div>
+					</div>
+					<div class="shop-item _shop_item"
+						style="width: 197px; padding: 0px 5px; height: auto;">
+						<div class="item-wrap" style="position: relative;">
+							<a href="/about/?idx=7"
+								class="_fade_link shop-item-thumb hover_img_none"> <img
+								data-prodcode="s20210224598db391dabf5" alt=""
+								src="https://cdn.imweb.me/thumbnail/20161229/586468cd7e3bc.jpg"
+								class="_org_img org_img _lazy_img"
+								data-original="https://cdn.imweb.me/thumbnail/20161229/586468cd7e3bc.jpg"
+								data-src="https://cdn.imweb.me/thumbnail/20161229/586468cd7e3bc.jpg">
+								<div class="item-overlay">
+									<div class="item-pay">
+										<div>
+											<h2>Slate Placemat</h2>
+											<p class="pay no-margin" style="">54,000원</p>
+											<div class="ns-icon clearfix">
+												<!--<span class="new bg-brand">NEW</span>-->
+											</div>
+										</div>
+									</div>
+								</div>
+							</a>
+						</div>
+						<div class="item-detail" style="">
+							<div class="item-pay">
+								<h2 style="display:">
+									<a class="_fade_link" href="/about/?idx=7">Slate Placemat</a>
+								</h2>
+								<div class="item-pay-detail">
+									<p class="pay" style="">54,000원</p>
+								</div>
+								<div class="ns-icon clearfix">
+									<!--<span class="new bg-brand">NEW</span>-->
+								</div>
+							</div>
+							<div class="item-icon">
+								<span><span><i class="icon-heart"></i> 0</span></span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<nav class="paging-block">
+			<!-- 페이징 버튼 -->
+			<ul class="pagination">
+				<li><a href="javascript:;" class="disabled"><i
+						aria-hidden="true" class="icon-arrow-left"></i><span
+						class="sr-only">Previous</span></a></li>
+				<li class="active"><a
+					href="/about/?&amp;page=1&amp;sort=recent">1</a></li>
+				<li><a href="/about/?&amp;page=2&amp;sort=recent">2</a></li>
+				<li><a href="javascript:;" class="disabled"><i
+						aria-hidden="true" class="icon-arrow-right"></i><span
+						class="sr-only">Next</span></a></li>
+			</ul>
+		</nav>
+	</div>
+
+
+</div>
+</div>
+</div>
+</div>
+<div doz_type="row" doz_grid="12" class="doz_row">
+	<div doz_type="grid" doz_grid="12" class="col-dz col-dz-12">
+		<div id="w20210224d6e92c3a2feef" doz_type="widget">
+			<div class="_widget_data " data-widget-name="여백"
+				data-widget-type="padding" data-widget-anim=""
+				data-widget-anim-duration="" data-widget-anim-delay=""
+				data-widget-parent-is-mobile="N">
+				<div class="widget padding" data-height="25"
+					style="margin-top: px; margin-bottom: px;">
+					<div id="padding_w20210224d6e92c3a2feef"
+						style="width: 100%; min-height: 1px; height: 25px;"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div doz_type="row" doz_grid="12" class="doz_row">
+	<div doz_type="grid" doz_grid="12" class="col-dz col-dz-12">
+		<div id="w20210224e42f42cd6f0f6" doz_type="widget">
+			<div class="_widget_data " data-widget-name="가로선"
+				data-widget-type="hr" data-widget-anim=""
+				data-widget-anim-duration="" data-widget-anim-delay=""
+				data-widget-parent-is-mobile="N">
+				<div class="widget line type01 _hide" id="hr_w20210224e42f42cd6f0f6">
+					<div class="line_box holder" style="width: 50px;">
+						<hr
+							style="border-top-width: 1px; border-color: rgba(0, 0, 0, 0.06);">
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+<div doz_type="row" doz_grid="12" class="doz_row">
+	<div doz_type="grid" doz_grid="12" class="col-dz col-dz-12">
+		<div id="w20210224f734c21fc728f" doz_type="widget">
+			<div class="_widget_data " data-widget-name="가로선"
+				data-widget-type="hr" data-widget-anim=""
+				data-widget-anim-duration="" data-widget-anim-delay=""
+				data-widget-parent-is-mobile="N">
+				<div class="widget line type01 _hide" id="hr_w20210224f734c21fc728f">
+					<div class="line_box holder" style="width: 0px;">
+						<hr style="">
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</div>
+<div doz_type="inside" class="inside"></div>
+</main>
+</div>

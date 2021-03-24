@@ -1,0 +1,47 @@
+package com.spring.cleanmarket.member.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.spring.cleanmarket.member.model.MemberVO;
+import com.spring.cleanmarket.member.repository.IMemberMapper;
+
+@Service
+public class MemberService implements IMemberService{
+
+	@Autowired
+	private IMemberMapper mapper;
+	
+	@Override
+	public void join(MemberVO member) {
+		if(member.getMemType().equals("general")) {
+			member.setMemType("g");
+		}else {
+			member.setMemType("s");
+		}
+		mapper.join(member);
+	}
+
+	@Override
+	public int checkId(String memID) {
+		return mapper.checkId(memID);
+	}
+
+	@Override
+	public void delete(String memID) {
+		mapper.checkId(memID);
+	}
+
+	@Override
+	public MemberVO selectOne(String memID) {
+		return mapper.selectOne(memID);
+	}
+
+	@Override
+	public List<MemberVO> selectAll() {
+		return mapper.selectAll();
+	}
+	
+}

@@ -1,0 +1,243 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<jsp:include page="../include/header.jsp" />
+
+
+<style>
+header.masthead {
+	display: none;
+}
+
+ul {
+    display: block;
+    list-style-type: disc;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+}
+
+.bphXry {
+	width: 100%;
+	display: flex;
+	padding: 2rem 0px;
+	border-bottom: 1px solid rgb(220, 219, 228);
+}
+
+.bBKMEo {
+    width: 10.5rem;
+    font-size: 18px;
+}
+
+</style>
+<br>
+<br>
+
+<div class="container">
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="card">
+				<div class="card-header text-white"
+					style="background-color: #643691;">게시글 등록</div>
+				<div class="card-body">
+
+					<form role="form">
+					<input type="hidden" name="memNo" value="${login.memNo}">
+						<ul class="sc-kqEXUp jMkGB">
+							<li class="sc-gxbSSY bphXry">
+								<div class="sc-bXopBW bBKMEo">
+									상품이미지<span>*</span><small>(0/12)</small>
+								</div>
+								<div class="sc-hhaNoI buTCOV">
+
+									<h6>이미지 등록</h6>
+									<input type="file" name="profile_pt" id="profile_pt" accept="image/jpg, image/jpeg, image/png"
+										onchange="previewImage(this,'View_area')">
+									
+									<div id='View_area'
+										style='position: relative; width: 200px; height: 200px; color: black; border: 0px solid black; dispaly: inline;'></div>
+
+									<div class="sc-fjdPjP iozzGC">
+											<b>* 상품 이미지는 640x640에 최적화 되어 있습니다.</b><br>- 이미지는 상품등록 시
+											정사각형으로 짤려서 등록됩니다.<br>- 이미지를 클릭 할 경우 원본이미지를 확인할 수 있습니다.<br>-
+											이미지를 클릭 후 이동하여 등록순서를 변경할 수 있습니다.<br>- 큰 이미지일경우 이미지가 깨지는
+											경우가 발생할 수 있습니다.<br>최대 지원 사이즈인 640 X 640 으로 리사이즈 해서
+											올려주세요.(개당 이미지 최대 10M)
+										</div>
+								</div>
+							</li>
+							<li class="sc-gxbSSY bphXry">
+								<div class="sc-bXopBW gxnpCB">제목<span>*</span>
+								</div>
+								<div class="sc-hhaNoI buTCOV">
+									<div class="sc-hokXgN hcrSpf">
+										<div class="sc-gneEKw dBgbVT">
+											<input type="text" name="itemTitle" placeholder="상품 제목을 입력해주세요.">
+										</div>
+										<div class="sc-boCWhm hBajsm">0/40</div>
+									</div>
+								</div></li>
+							<li class="sc-gxbSSY bphXry"><div class="sc-bXopBW DTAYM">
+									카테고리<span>*</span>
+								</div>
+								<div class="sc-hhaNoI buTCOV">
+									<div class="sc-hXhGGG XXBMH">
+										<div id="itemCategory">
+											<input type="radio" name="itemCategory" value="여성의류" checked>여성의류<br>
+											<input type="radio" name="itemCategory" value="남성의류">남성의류<br> 
+											<input type="radio" name="itemCategory" value="신발">신발<br>
+											<input type="radio" name="itemCategory" value="모자/인형/가방">모자/인형/가방<br>
+										</div>
+									</div>
+								</div></li>
+							<li class="sc-gxbSSY bphXry"><div class="sc-bXopBW gxnpCB">
+									거래지역<span>*</span>
+								</div>
+								<div class="sc-hhaNoI buTCOV">
+									<div class="sc-cIsjWt etcNyM" >
+										<label> <input name="itemFiradd" readonly
+											type="checkbox" value="${login.memFiradd }" checked> 주소1 : ${login.memFiradd }
+										</label><br>
+										<label> <input name="itemSecadd" readonly
+											type="checkbox" value="${login.memSecadd }"> 주소2 : ${login.memSecadd }
+										</label>
+									</div>
+								</div></li>
+
+
+							<li class="sc-gxbSSY bphXry"><div class="sc-bXopBW edUXQu">설명</div>
+								<div class="sc-hhaNoI buTCOV">
+									<textarea name="itemContent" placeholder="상품 설명을 입력해주세요." rows="6"
+										class="sc-izfUZz eEjZnV"></textarea>
+									<div class="sc-eqGige gTqRab">
+										<div class="sc-kUQWMX giYAKW">0/2000</div>
+									</div>
+								</div></li>
+
+							<li class="sc-gxbSSY bphXry"><div class="sc-bXopBW gxnpCB">
+									가격<span>*</span>
+								</div>
+								<div class="sc-hhaNoI buTCOV">
+									<div class="sc-fxMfqs hGKuJO">
+										<input type="text" name="itemPrice" placeholder="숫자만 입력해주세요."
+											class="sc-rzOft lfkNaQ" value="">원
+									</div>
+									<div class="sc-eIvgmF fxEngV">
+										<div class="sc-jklikK htQzEY">
+											<label for="contactHope" class="sc-bkypNX gHNpNK">
+												<input name="itemPriceOption" type="checkbox">가격협의 가능</label>
+										</div>
+									</div>
+								</div></li>
+
+						</ul>
+						<input type="button" value="등록" class="btn form-control" id="itemWrite-btn"
+							style="background-color: #643691; margin-top: 0; height: 40px; color: white; border: 0px solid #f78f24; opacity: 0.8">
+						&nbsp;&nbsp; 
+						<a class="btn form-control" href="<c:url value='/item/item_list'/>"
+							style="cursor: pointer; margin-top: 0; height: 40px; color: white; background-color: orange; border: 0px solid #388E3C; opacity: 0.8">취소</a>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script> 
+
+
+	$('#itemWrite-btn').click(function() {
+		
+		if(document.getElementByName("itemFiradd").value==null){
+			alert("주소를 선택하세요")
+		}
+		
+		formElement.attr("action", "/item/write");
+		formElement.attr("method", "post");
+		formElement.submit();
+	}
+	
+
+
+	//이미지
+	function previewImage(targetObj, View_area) {
+		var preview = document.getElementById(View_area); //div id
+		var ua = window.navigator.userAgent;
+
+		//ie일때(IE8 이하에서만 작동)
+		if (ua.indexOf("MSIE") > -1) {
+			targetObj.select();
+			try {
+				var src = document.selection.createRange().text; // get file full path(IE9, IE10에서 사용 불가)
+				var ie_preview_error = document
+						.getElementById("ie_preview_error_" + View_area);
+
+				if (ie_preview_error) {
+					preview.removeChild(ie_preview_error); //error가 있으면 delete
+				}
+
+				var img = document.getElementById(View_area); //이미지가 뿌려질 곳
+
+				//이미지 로딩, sizingMethod는 div에 맞춰서 사이즈를 자동조절 하는 역할
+				img.style.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='"
+						+ src + "', sizingMethod='scale')";
+			} catch (e) {
+				if (!document.getElementById("ie_preview_error_" + View_area)) {
+					var info = document.createElement("<p>");
+					info.id = "ie_preview_error_" + View_area;
+					info.innerHTML = e.name;
+					preview.insertBefore(info, null);
+				}
+			}
+			//ie가 아닐때(크롬, 사파리, FF)
+		} else {
+			var files = targetObj.files;
+			for (var i = 0; i < files.length; i++) {
+				var file = files[i];
+				var imageType = /image.*/; //이미지 파일일경우만.. 뿌려준다.
+				if (!file.type.match(imageType))
+					continue;
+				var prevImg = document.getElementById("prev_" + View_area); //이전에 미리보기가 있다면 삭제
+				if (prevImg) {
+					preview.removeChild(prevImg);
+				}
+				var img = document.createElement("img");
+				img.id = "prev_" + View_area;
+				img.classList.add("obj");
+				img.file = file;
+				img.style.width = '200px';
+				img.style.height = '200px';
+				preview.appendChild(img);
+				if (window.FileReader) { // FireFox, Chrome, Opera 확인.
+					var reader = new FileReader();
+					reader.onloadend = (function(aImg) {
+						return function(e) {
+							aImg.src = e.target.result;
+						};
+					})(img);
+					reader.readAsDataURL(file);
+				} else { // safari is not supported FileReader
+					//alert('not supported FileReader');
+					if (!document.getElementById("sfr_preview_error_"
+							+ View_area)) {
+						var info = document.createElement("p");
+						info.id = "sfr_preview_error_" + View_area;
+						info.innerHTML = "not supported FileReader";
+						preview.insertBefore(info, null);
+					}
+				}
+			}
+		}
+	}
+	
+	
+	
+
+</script>
+
+
+
+<jsp:include page="../include/footer.jsp" />

@@ -1,0 +1,5 @@
+package com.spring.cleanmarket.item.model;
+
+public class ItemVO {
+
+}

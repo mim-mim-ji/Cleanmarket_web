@@ -1,0 +1,42 @@
+package com.spring.cleanmarket.item.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.spring.cleanmarket.item.model.ItemVO;
+import com.spring.cleanmarket.item.repository.IItemMapper;
+import com.spring.cleanmarket.member.model.MemberVO;
+
+@Service
+public class ItemService implements IItemService{
+
+	@Autowired
+	private IItemMapper mapper;
+	
+	@Override
+	public void write(ItemVO item) {
+		if(item.getItemPriceOption()!=null) {
+			item.setItemPriceOption("y");
+		}else {
+			item.setItemPriceOption("n");
+		}
+		
+		if(item.getItemFiradd()==null) { //첫번째 체크박스 체크X			
+			if(item.getItemSecadd()!=null) { //두번째만 체크햇을때
+				item.setItemFiradd(item.getItemSecadd()); //두번째 주소를 첫번째에 저장 
+				item.setItemSecadd(null);  //두번째는 null
+			}
+		}else { //첫번째 체크박스 체크O
+			if(item.getItemSecadd()==null) { //두번째 체크X
+				item.setItemSecadd(null); //두번째는 null
+			}
+		}
+		mapper.write(item);
+	}
+
+	@Override
+	public ItemVO selectOne(String itemNo) {
+		return mapper.selectOne(itemNo);
+	}
+
+}

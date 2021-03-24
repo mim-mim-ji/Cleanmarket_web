@@ -1,0 +1,5 @@
+package com.spring.cleanmarket.item.repository;
+
+public interface IItemMapper {
+
+}

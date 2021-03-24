@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace=" com.spring.cleanmarket.member.repository.IMemberMapper">
+
+<!-- DB컬럼명과 VO클래스의 필드명이 다르므로 셋팅 -->
+	<resultMap type="com.spring.cleanmarket.member.model.MemberVO" id="MemberMap">
+		<id property="memNo" column="mem_no"/>
+		<result property="memID" column="mem_id"/>
+		<result property="memPassword" column="mem_password"/>
+		<result property="memName" column="mem_name"/>
+		<result property="memPhone" column="mem_phone"/>
+		<result property="memFiradd" column="mem_firadd"/>
+		<result property="memSecadd" column="mem_secadd"/>
+		<result property="storeName" column="store_name"/>
+		<result property="memRegdate" column="mem_regdate"/>
+		<result property="memType" column="mem_type"/>		
+	</resultMap>
+	
+	<insert id="join">
+		insert into member
+		(mem_no, mem_id, mem_password, mem_name, mem_phone,
+		mem_firadd, mem_secadd, store_name, mem_type)
+		values (mem_seq.nextval,#{memID},#{memPassword},#{memName},#{memPhone},
+        #{memFiradd}, #{memSecadd}, #{storeName}, #{memType});
+	</insert>
+	
+
+</mapper>

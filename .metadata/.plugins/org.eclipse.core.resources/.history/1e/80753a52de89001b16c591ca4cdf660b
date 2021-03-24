@@ -1,0 +1,20 @@
+package com.spring.cleanmarket.item.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.spring.cleanmarket.member.service.IMemberService;
+
+@Controller
+@RequestMapping("item")
+public class ItemController {
+	
+	@Autowired
+	private IMemberService service;
+	
+	public ItemController() {
+		System.out.println("ItemController작동");
+	}
+	
+}

@@ -1,0 +1,49 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<jsp:include page="../include/header.jsp" />
+
+<style>
+header.masthead {
+	display: none;
+}
+</style>
+<br />
+<br />
+<div class="container">
+
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="card">
+				<div class="card-header text-white"
+					style="background-color: #643691;">${item.itemNo}번게시물 내용</div>
+				<div>
+					<input type="image" value="${profile_pt}">${profile_pt}이미지
+				</div>
+				<div class="card-body">
+
+					<div class="form-group">
+						<label>작성자</label> <input type="text" class="form-control"
+							name='writer' value="${item.memNo}" readonly>
+					</div>
+
+					<div class="form-group">
+						<label>제목</label> <input type="text" class="form-control"
+							name='title' value="${item.itemTitle}" readonly>
+					</div>
+
+					<div class="form-group">
+						<label>내용</label>
+						<textarea class="form-control" rows="5" name='content' readonly>${item.itemContent}</textarea>
+					</div>
+					<td><a href="<c:url value='/item/delete/${item.itemNo}' />">삭제</a></td>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<jsp:include page="../include/footer.jsp" />

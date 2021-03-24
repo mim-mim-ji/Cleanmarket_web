@@ -1,0 +1,32 @@
+package com.spring.cleanmarket.item.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.spring.cleanmarket.item.model.ItemVO;
+import com.spring.cleanmarket.item.repository.IItemMapper;
+import com.spring.cleanmarket.member.model.MemberVO;
+
+@Service
+public class ItemService implements IItemService{
+
+	@Autowired
+	private IItemMapper mapper;
+	
+	@Override
+	public void write(ItemVO item) {
+		if(item.getItemPriceOption()!=null) {
+			item.setItemPriceOption("y");
+		}else {
+			item.setItemPriceOption("n");
+		}
+		
+		mapper.write(item);
+	}
+
+	@Override
+	public ItemVO selectOne(String itemNo) {
+		return mapper.selectOne(itemNo);
+	}
+
+}

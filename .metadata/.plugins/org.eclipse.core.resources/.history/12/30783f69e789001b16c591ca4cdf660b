@@ -1,0 +1,163 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<jsp:include page="../include/header.jsp" />
+
+<style>
+header.masthead {
+	display: none;
+}
+
+.bphXry {
+	width: 100%;
+	display: flex;
+	padding: 2rem 0px;
+	border-bottom: 1px solid rgb(220, 219, 228);
+}
+</style>
+<br>
+<br>
+
+<div class="container">
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="card">
+				<div class="card-header text-white"
+					style="background-color: #643691;">게시글 등록</div>
+				<div class="card-body">
+
+					<form role="form" method="post">
+						<ul class="form-group">
+							<li class="sc-gxbSSY bphXry">
+								<div class="">
+									상품이미지<span>*</span><small>(0/12)</small>
+								</div>
+								<div class="sc-hhaNoI buTCOV">
+									<ul class="sc-gKLXLV KuQhq">
+										<li class="sc-bvCTgw erFeQZ">이미지 등록<input type="file"
+											accept="image/jpg, image/jpeg, image/png" multiple=""></li>
+
+									</ul>
+									<div class="sc-fjdPjP iozzGC">
+										<b>* 상품 이미지는 640x640에 최적화 되어 있습니다.</b><br>- 이미지는 상품등록 시
+										정사각형으로 짤려서 등록됩니다.<br>- 이미지를 클릭 할 경우 원본이미지를 확인할 수 있습니다.<br>-
+										이미지를 클릭 후 이동하여 등록순서를 변경할 수 있습니다.<br>- 큰 이미지일경우 이미지가 깨지는
+										경우가 발생할 수 있습니다.<br>최대 지원 사이즈인 640 X 640 으로 리사이즈 해서
+										올려주세요.(개당 이미지 최대 10M)
+									</div>
+									<div class="sc-cIShpX RfNBn">
+										<div class="sc-kAKrxA YsblG">
+											<button type="button" class="sc-lhLRcH fHQqnG">
+												<img
+													src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEQAAABACAYAAACjgtGkAAAAAXNSR0IArs4c6QAAAolJREFUeAHl20tSxCAQANCJW12ql3DtKTxE9GQ6h/AU7j2EutT12J1qUowhCZ/+AFLFgIEU9pvApjPDAcrpdLqH5gHqJ9TjMAzf0HZfIO4rCHKEegP1FeJ+u6Co36H9oIGRJtJQn80fDIwdDQ6DCxcmXEIftW6hdv2kBDBwV/ygxQyCf/wHlC2MBUjvKHsYQZBeUWIwVkF6Q4nF2ATpBSUFYxekdZRUjCiQVlFyMKJBWkPJxUgCaQWlBCMZpHaUUowskFpRODCyQWpD4cIoAqkFhROjGMQahRuDBcQKRQKDDUQbRQqDFUQLRRKDHUQaRRpDBEQKRQNDDIQbRQtDFIQLRRNDHKQURRtDBSQXxQJDDSQVxQpDFSQWxRJDHWQPxRrDBGQNBa9DcYlnzLXO6cVpROnjLJWptOa0DDwNfi75i9a+htYMA/8HMxBcnFCeoIsQWBDm2SWepyvKH+51COVl5+VCX0jo2nyDdMcMxDtA8enAJwMr9kcag65+Mfk2PAx8c2c6Myh08/dT1EFCGO7MgDH/oDV5aUcVZAvDbQ5rFDWQGIwaUFRAUjCsUcRBcjAsUURBSjCsUMRAODAsUERAODG0UdhBJDA0UVhBJDG0UNhANDA0UFhANDGkUYpBLDAkUYpALDGkULJBasCQQMkCqQmDGyUZpEYMTpQkkJoxuFCiQVrA4ECJAmkJoxRlF6RFjBKUTZCWMXJRVkF6wMhBCSaqesJAFEpzHKGLOSDMBY0QI6Y8FmUBQhNdFt7lRqYf+S7ubuiCh4IxIcpjCOVsy9CER7oBb3xxSSTod1H2YpxB9iZ2oUFBbMU6gWxN6AnCj2UtZneG3MFk3FddbhMfwvUDZwoaHH4B+xHVOFecBB4AAAAASUVORK5CYII="
+													width="34" height="32" alt="닫기 버튼 아이콘">
+											</button>
+											<div class="sc-jMtzgO hudRNW">
+												<div class="sc-ccvjgv bGmXLy">상품이미지</div>
+												<div class="sc-ccbnFN fgfXKY"></div>
+												<div class="sc-hSmEHG iwDjAi"></div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</li>
+							<li class="sc-gxbSSY bphXry"><div class="sc-bXopBW gxnpCB">
+									제목<span>*</span>
+								</div>
+								<div class="sc-hhaNoI buTCOV">
+									<div class="sc-hokXgN hcrSpf">
+										<div class="sc-gneEKw dBgbVT">
+											<input type="text" placeholder="상품 제목을 입력해주세요."
+												class="sc-fxmata iPXQwc" value="">
+										</div>
+										<div class="sc-boCWhm hBajsm">0/40</div>
+									</div>
+								</div></li>
+							<li class="sc-gxbSSY bphXry"><div class="sc-bXopBW DTAYM">
+									카테고리<span>*</span>
+								</div>
+								<div class="sc-hhaNoI buTCOV">
+									<div class="sc-hXhGGG XXBMH">
+										<div class="sc-hTQSVH fXYJYf">
+											<ul class="sc-dWcDbm hRPYLZ">
+												<li class="sc-esExBO bmEHfy"><button type="button"
+														class="sc-ctwKVn dPmldx">여성의류</button></li>
+												<li class="sc-esExBO bmEHfy"><button type="button"
+														class="sc-ctwKVn dPmldx">남성의류</button></li>
+												<li class="sc-esExBO bmEHfy"><button type="button"
+														class="sc-ctwKVn dPmldx">신발</button></li>
+												<li class="sc-esExBO bmEHfy"><button type="button"
+														class="sc-ctwKVn dPmldx">모자/인형/가방</button></li>
+											</ul>
+										</div>
+									</div>
+									<h3 class="sc-csZoYU ljyWET">
+										선택한 카테고리 : <b></b>
+									</h3>
+								</div></li>
+							<li class="sc-gxbSSY bphXry"><div class="sc-bXopBW gxnpCB">
+									거래지역<span>*</span>
+								</div>
+								<div class="sc-hhaNoI buTCOV">
+									<div class="sc-cIsjWt etcNyM">
+										<button type="button" class="sc-hQfrgq hHQBYf">내 위치</button>
+										<button type="button" class="sc-hQfrgq hHQBYf">최근 지역</button>
+										<button type="button" class="sc-hQfrgq hHQBYf">주소 검색</button>
+									</div>
+									<input readonly="" placeholder="선호 거래 지역을 검색해주세요."
+										class="sc-OnmeF jNsyep" value="서울특별시 종로구 종로3가">
+								</div></li>
+							<li class="sc-gxbSSY bphXry"><div class="sc-bXopBW drMtcr">
+									상태<span>*</span>
+								</div>
+							<li class="sc-gxbSSY bphXry"><div class="sc-bXopBW gxnpCB">
+									가격<span>*</span>
+								</div>
+								<div class="sc-hhaNoI buTCOV">
+									<div class="sc-fxMfqs hGKuJO">
+										<input type="text" placeholder="숫자만 입력해주세요."
+											class="sc-rzOft lfkNaQ" value="">원
+									</div>
+									<div class="sc-eIvgmF fxEngV">
+										<div class="sc-jklikK htQzEY">
+											<label for="freesShipping" class="sc-bkypNX gHNpNK"><input
+												id="freesShipping" type="checkbox">배송비 포함</label>
+										</div>
+										<div class="sc-jklikK htQzEY">
+											<label for="contactHope" class="sc-bkypNX gHNpNK"><input
+												id="contactHope" type="checkbox">가격협의 가능</label>
+										</div>
+									</div>
+								</div></li>
+							<li class="sc-gxbSSY bphXry"><div class="sc-bXopBW edUXQu">설명</div>
+								<div class="sc-hhaNoI buTCOV">
+									<textarea placeholder="상품 설명을 입력해주세요." rows="6"
+										class="sc-izfUZz eEjZnV"></textarea>
+									<div class="sc-eqGige gTqRab">
+										<span>혹시 <a target="_blank"
+											href="/customer/notice?id=607">카카오톡 ID</a>를 적으셨나요?
+										</span>
+										<div class="sc-kUQWMX giYAKW">0/2000</div>
+									</div>
+								</div></li>
+
+							<li class="sc-gxbSSY bphXry"><div class="sc-bXopBW drMtcr">수량</div>
+								<div class="sc-hhaNoI buTCOV">
+									<div class="sc-bCQtTp iMJgK">
+										<input type="text" class="sc-dcmekm efHtaL" value="1">개
+									</div>
+								</div></li>
+						</ul>
+						<input type="submit" value="등록" class="btn form-control"
+							style="background-color: #643691; margin-top: 0; height: 40px; color: white; border: 0px solid #f78f24; opacity: 0.8">
+						&nbsp;&nbsp; <a class="btn form-control"
+							href="<c:url value='/board/list'/>"
+							style="cursor: pointer; margin-top: 0; height: 40px; color: white; background-color: orange; border: 0px solid #388E3C; opacity: 0.8">취소</a>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<jsp:include page="../include/footer.jsp" />
