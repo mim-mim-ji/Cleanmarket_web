@@ -20,5 +20,8 @@ public interface IMemberService {
 
 	//회원 정보 전체 조회 기능
 	List<MemberVO> selectAll();
+	
+	//회원정보수정 기능
+	void update(MemberVO member);
 
 }

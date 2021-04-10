@@ -1,0 +1,15 @@
+package com.spring.cleanmarket.reply.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.spring.cleanmarket.reply.repository.IReplyMapper;
+
+@Service
+public class ReplyService implements IReplyService{
+	
+	@Autowired
+	private IReplyMapper mapper;
+	
+	
+}

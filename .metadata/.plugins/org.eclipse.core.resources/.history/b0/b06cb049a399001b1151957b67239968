@@ -1,0 +1,37 @@
+package com.spring.cleanmarket.reply.controller;
+
+import javax.servlet.http.HttpSession;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.spring.cleanmarket.member.model.MemberVO;
+import com.spring.cleanmarket.reply.model.ReplyVO;
+import com.spring.cleanmarket.reply.service.IReplyService;
+
+@Controller
+@RequestMapping("qna/detail")
+public class ReplyController {
+	
+	@Autowired
+	private IReplyService service;
+	
+	@PostMapping("add_reply")
+	public String addReply(Model model, ReplyVO vo, HttpSession session) {
+		System.out.println("qna/detail/add_reply -> POST");
+		
+		MemberVO member = (MemberVO) session.getAttribute("login");
+		
+		vo.setRepWriter(member.getMemID());
+		service.replywrite(vo);
+		System.out.println(vo.toString());
+		
+		model.addAttribute("replys",vo);
+		return "redirect:/item/qna_detail";
+	}
+	
+}

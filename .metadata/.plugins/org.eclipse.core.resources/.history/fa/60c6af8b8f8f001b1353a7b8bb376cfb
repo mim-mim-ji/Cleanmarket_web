@@ -1,0 +1,53 @@
+package com.spring.cleanmarket.mypage.controller;
+
+import javax.servlet.http.HttpSession;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import com.spring.cleanmarket.member.model.MemberVO;
+import com.spring.cleanmarket.member.service.IMemberService;
+
+@Controller
+@RequestMapping("mypage")
+public class MypageController {
+	
+	@Autowired
+	private IMemberService service;
+	
+	@GetMapping("/items/selling")
+	public String itemselling() {
+		return "mypage/items_selling";
+	}
+	
+	@GetMapping("/modify")
+	public String modify(String memID, Model model) {
+		
+		model.addAttribute("login",service.selectOne(memID));
+		
+		return "mypage/modify_general";
+	}
+	
+	@PostMapping("/modify")
+	public String modify(MemberVO vo, RedirectAttributes ra) {
+		System.out.println("URL : /mypage/modify -> POST");
+		
+		MemberVO member = service.selectOne(vo.getMemID());
+		
+		if(member.getMemPassword().equals(vo.getMemPassword())) {			
+			service.update(vo);
+			System.out.println("회원 정보 수정 완료");
+			ra.addFlashAttribute("msg","modSuccess");		
+		}else {
+			System.out.println("비밀번호 불일치");
+			ra.addFlashAttribute("msg","modFail");
+		}
+		return "redirect:/mypage/modify";
+	}
+	
+}

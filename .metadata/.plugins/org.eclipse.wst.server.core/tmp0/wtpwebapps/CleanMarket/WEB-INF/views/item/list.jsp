@@ -62,42 +62,12 @@ td>span {
 		</div>
 	</div>
 
-	<!-- Member Grid -->
-
 	<section class="bg-light" id="portfolio"
 		style="padding-top: 40px; padding-bottom: 0;">
 		<div class="container">
 
 			<div class="row">
-				<div class="col-md-4 col-sm-6 portfolio-item">
-					<a class="portfolio-link" href="#">
-						<div class="portfolio-hover">
-							<div class="portfolio-hover-content"></div>
-						</div> <img class="img-thumbnail img-fluid"
-						src="https://cdn.imweb.me/thumbnail/20161229/586468cb9e57e.jpg">
-					</a>
-					<div class="portfolio-caption" align="left">
-						<div class="item-detail" style="text-align: left;">
-							<div class="itemInfo">
-								<h5>
-									<a class="itemTitle"
-										href="<c:url value='/item/content/${b.itemNo}'/>"
-										style="color: black">상품제목</a>
-								</h5>
-								<div class="item-detail">
-									<p class="itemPrice" style="">44,000원</p>
-								</div>
-							</div>
-							<div class="itemHeartCnt">
-								<a href="#" style="border-radius: 0px; color: #404040"> <i
-									class="far fa-heart">&nbsp; 0</i></a>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				
-				
+							
 				<!-- 게시물이 들어갈 공간 -->
 				<c:forEach var="b" items="${items}">
 

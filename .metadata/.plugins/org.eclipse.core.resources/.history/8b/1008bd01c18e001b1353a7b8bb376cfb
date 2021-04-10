@@ -1,0 +1,67 @@
+package com.spring.cleanmarket.qna.model;
+
+import java.sql.Date;
+
+public class QnaVO {
+	private int qnaNo;
+	private int itemNo;
+	private String qnaTitle;
+	private String qnaContent;
+	private String qnaWriter;
+	private Date qnaRegdate;
+	
+	//신규게시물에 비밀글 마크를 붙일지 말지를 결정하는 논리필드 선언
+	private boolean qnaHidden;
+
+	public boolean isQnaHidden() {
+		return qnaHidden;
+	}
+	public void setQnaHidden(boolean qnaHidden) {
+		this.qnaHidden = qnaHidden;
+	}
+	
+	
+	public int getQnaNo() {
+		return qnaNo;
+	}
+	public void setQnaNo(int qnaNo) {
+		this.qnaNo = qnaNo;
+	}
+	public int getItemNo() {
+		return itemNo;
+	}
+	public void setItemNo(int itemNo) {
+		this.itemNo = itemNo;
+	}
+	public String getQnaTitle() {
+		return qnaTitle;
+	}
+	public void setQnaTitle(String qnaTitle) {
+		this.qnaTitle = qnaTitle;
+	}
+	public String getQnaContent() {
+		return qnaContent;
+	}
+	public void setQnaContent(String qnaContent) {
+		this.qnaContent = qnaContent;
+	}
+	public String getQnaWriter() {
+		return qnaWriter;
+	}
+	public void setQnaWriter(String qnaWriter) {
+		this.qnaWriter = qnaWriter;
+	}
+	public Date getQnaRegdate() {
+		return qnaRegdate;
+	}
+	public void setQnaRegdate(Date qnaRegdate) {
+		this.qnaRegdate = qnaRegdate;
+	}
+	
+	@Override
+	public String toString() {
+		return "QnaVO [qnaNo=" + qnaNo + ", itemNo=" + itemNo + ", qnaTitle=" + qnaTitle + ", qnaContent=" + qnaContent
+				+ ", qnaWriter=" + qnaWriter + ", qnaRegdate=" + qnaRegdate + "]";
+	}
+	
+}

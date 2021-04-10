@@ -1,0 +1,49 @@
+package com.spring.cleanmarket.qna.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.spring.cleanmarket.item.model.ItemVO;
+import com.spring.cleanmarket.qna.model.QnaVO;
+import com.spring.cleanmarket.qna.repository.IQnaMapper;
+
+@Service
+public class QnaService implements IQnaService{
+
+	@Autowired
+	private IQnaMapper mapper;
+	
+	@Override
+	public void qnawrite(QnaVO vo) {
+		if(vo.isQnaHiiden()) {
+			vo.setQnaHiiden(true);
+		}else {
+			vo.setQnaHiiden(false);
+		}
+		mapper.qnawrite(vo);
+	}
+
+	@Override
+	public QnaVO qnadetail(int qnaNo) {
+		return mapper.qnadetail(qnaNo);
+	}
+
+	@Override
+	public void qnaupdate(QnaVO vo) {
+		mapper.qnaupdate(vo);
+	}
+
+	@Override
+	public void qnadelete(int qnaNo) {
+		mapper.qnadelete(qnaNo);
+	}
+
+	@Override
+	public List<QnaVO> getqnaList(int itemNo) {
+		return mapper.getqnaList(itemNo);
+	}
+	
+	
+}

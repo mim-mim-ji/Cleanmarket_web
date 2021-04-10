@@ -1,0 +1,5 @@
+package com.spring.cleanmarket.reply.repository;
+
+public class IReplyMapper {
+
+}

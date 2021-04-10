@@ -1,0 +1,23 @@
+package com.spring.cleanmarket.reply.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.spring.cleanmarket.reply.service.IReplyService;
+
+@Controller
+@RequestMapping("qna/detail")
+public class ReplyController {
+	
+	@Autowired
+	private IReplyService service;
+	
+	@PostMapping("add_reply")
+	public String addReply() {
+		
+		return "redirect:/item/qna_detail";
+	}
+	
+}

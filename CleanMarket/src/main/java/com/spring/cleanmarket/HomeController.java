@@ -7,6 +7,7 @@ import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,7 +17,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import com.spring.cleanmarket.item.commons.SearchVO;
 import com.spring.cleanmarket.item.model.ItemVO;
 import com.spring.cleanmarket.item.service.IItemService;
 
@@ -36,7 +39,7 @@ public class HomeController {
 	 * Simply selects the home view to render by returning its name.
 	 */
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String home(Locale locale, Model model) {
+	public String home(Locale locale, Model model, HttpSession session,SearchVO search) {
 		logger.info("Welcome home! The client locale is {}.", locale);
 		
 		Date date = new Date();
@@ -46,8 +49,20 @@ public class HomeController {
 		
 		model.addAttribute("serverTime", formattedDate );
 		
-		List<ItemVO> list = service.getItemList();
-		model.addAttribute("items",list);
+		if(session.getAttribute("location") != null) {
+			System.out.println("세션있음"+(String)session.getAttribute("location"));
+			
+			session.setAttribute("location",session.getAttribute("location"));
+			search.setLocation((String)session.getAttribute("location"));
+			
+			List<ItemVO> list = service.getItemList(search);
+			model.addAttribute("items",list);
+			
+		}else {
+			search.setCategory(null);
+			List<ItemVO> list = service.getItemList(search);
+			model.addAttribute("items",list);			
+		}
 		
 		return "home";
 	}

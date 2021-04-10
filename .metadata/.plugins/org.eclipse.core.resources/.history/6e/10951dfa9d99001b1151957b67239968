@@ -1,0 +1,5 @@
+package com.spring.cleanmarket.reply.service;
+
+public interface IReplyService {
+
+}

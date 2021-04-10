@@ -1,0 +1,108 @@
+package com.spring.cleanmarket.qna.controller;
+
+import java.util.List;
+
+import javax.servlet.http.HttpSession;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import com.spring.cleanmarket.item.model.ItemVO;
+import com.spring.cleanmarket.item.service.IItemService;
+import com.spring.cleanmarket.qna.model.QnaVO;
+import com.spring.cleanmarket.qna.service.IQnaService;
+import com.spring.cleanmarket.reply.model.ReplyVO;
+import com.spring.cleanmarket.reply.service.IReplyService;
+
+@Controller
+@RequestMapping("qna")
+public class QnaController {
+
+	@Autowired
+	private IQnaService service;
+	
+	@Autowired
+	private IItemService itemservice;
+	
+	@Autowired
+	private IReplyService repService;
+	
+	//qna작성 페이지 요청
+	@GetMapping("/write")
+	public String qnaWrite(@RequestParam("itemNo") int itemNo, Model model) {
+		System.out.println("상품문의 글쓰기 페이지 요청: /qna/write -> GET");
+		System.out.println("itemNo: "+itemNo);
+		model.addAttribute("itemNo",itemNo);
+		return "item/qna_write";
+	}
+	
+	//qna등록 요청
+	@PostMapping("/write")
+	public String qnaWrite(Model model, QnaVO vo) {
+		System.out.println("상품문의 글 DB등록 요청: /qna/write -> POST ");
+		System.out.println(vo.toString());
+		
+		service.qnawrite(vo);
+		model.addAttribute("qna",vo);
+		return "redirect:/item/content/"+vo.getItemNo();
+	}
+	
+	//qna 상세조회 페이지요청
+	@GetMapping("/detail/{qnaNo}")
+	public String qnadetail(@PathVariable("qnaNo") int qnaNo, Model model) {
+		System.out.println("qna 상세조회 : /qna/detail -> GET");
+		System.out.println("qnaNo : "+qnaNo);
+
+		QnaVO vo = service.qnadetail(qnaNo);
+		ItemVO item = itemservice.selectOne(vo.getItemNo());
+		System.out.println("result data: "+vo);
+		
+		List<ReplyVO> rep = repService.getreplyList(qnaNo);
+		model.addAttribute("item",item);
+		model.addAttribute("qna",vo);
+		model.addAttribute("replys",rep);
+		
+		return "item/qna_detail";
+	}
+	
+	//qna삭제 요청
+	@PostMapping("/delete")
+	public String qnadelete(int qnaNo,QnaVO vo) {
+		System.out.println("qna 삭제 요청 : /qna/delete -> POST");
+		service.qnadelete(qnaNo);
+		return "redirect:/item/content/"+vo.getItemNo();
+	}
+	
+	//게시글 수정 페이지 이동 요청
+	@GetMapping("/modify")
+	public String modify(int qnaNo, Model model) {
+		System.out.println("qna 수정 페이지 요청 : /qna/modify -> GET");
+		System.out.println("qna 번호 : "+qnaNo);
+
+		model.addAttribute("qna",service.qnadetail(qnaNo));
+		return "item/qna_modify";
+	}
+
+	//게시글 수정 완료 요청
+	@PostMapping("/modify")
+	public String modify(QnaVO vo, RedirectAttributes ra) {
+		System.out.println("URL : /board/modify -> POST");
+
+		service.qnaupdate(vo);
+
+		ra.addFlashAttribute("msg","modSuccess");
+
+		return "redirect:/item/content/"+vo.getItemNo();
+		
+	}	
+
+	
+}

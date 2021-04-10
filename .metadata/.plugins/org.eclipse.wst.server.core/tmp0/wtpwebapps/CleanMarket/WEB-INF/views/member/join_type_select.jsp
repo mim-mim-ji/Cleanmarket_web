@@ -8,14 +8,14 @@
 
 <br>
 <br>
-	<form action="<c:url value='/join_agree'/> ">
+	<form action="<c:url value='/join_agree'/> " id="joinselectForm">
 		<div id="join_select" align="center">
 			<h2>회원가입하기</h2>
 			<br><br>
-			<input type="radio" name="memType" value="general">일반 회원  &nbsp;
+			<input type="radio" name="memType" value="general" checked>일반 회원  &nbsp;
 			<input type="radio" name="memType" value="store">가맹점주 회원
 			<br><br>
-			<input type="submit" value="다음">			
+			<input type="submit" value="다음" id="submit-btn">			
 		</div>
 	</form>
 

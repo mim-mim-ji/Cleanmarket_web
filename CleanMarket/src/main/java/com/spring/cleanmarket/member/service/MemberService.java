@@ -38,5 +38,10 @@ public class MemberService implements IMemberService{
 	public List<MemberVO> selectAll() {
 		return mapper.selectAll();
 	}
+
+	@Override
+	public void update(MemberVO member) {
+		mapper.update(member);
+	}
 	
 }

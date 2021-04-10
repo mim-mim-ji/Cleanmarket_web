@@ -1,0 +1,29 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<br><br>
+<div class="container" align="center">
+	<div>
+		<h2>판매내역</h2>
+		<hr>
+	</div>
+	<div class="container">
+		<div class="row" style="padding-bottom: 10px">
+			<div class="col">
+				<a href="/cleanmarket/mypage/items/selling" role="button" class="btn btn-primary btn-lg"
+					style="background-color: #3498DB ;">판매중</a>
+			</div>
+			<div class="col">
+				<a href="/cleanmarket/mypage/items/reserve" role="button" class="btn btn-primary btn-lg"
+					style="background-color: gray;">예약중</a>
+			</div>
+			<div class="col">
+				<a href="/cleanmarket/mypage/items/store" role="button" class="btn btn-primary btn-lg"
+					style="background-color: gray">매장보관중</a>
+			</div>
+			<div class="col">
+				<a href="/cleanmarket/mypage/items/complete" role="button" class="btn btn-primary btn-lg"
+					style="background-color: gray">거래완료</a>
+			</div>
+		</div>
+	</div>
+</div>

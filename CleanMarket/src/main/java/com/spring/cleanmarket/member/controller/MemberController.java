@@ -1,5 +1,7 @@
 package com.spring.cleanmarket.member.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -20,6 +22,9 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.spring.cleanmarket.item.commons.SearchVO;
+import com.spring.cleanmarket.item.model.ItemVO;
+import com.spring.cleanmarket.item.service.IItemService;
 import com.spring.cleanmarket.member.model.MemberVO;
 import com.spring.cleanmarket.member.service.IMemberService;
 
@@ -30,6 +35,9 @@ public class MemberController {
 	
 	@Autowired
 	private IMemberService service;
+	
+	@Autowired
+	private IItemService itemservice;
 	
 	public MemberController() {
 		System.out.println("MemberController 작동");
@@ -142,27 +150,57 @@ public class MemberController {
 		return new ModelAndView("redirect:/");
 	}
 	
-	
+	//검색처리
 	@GetMapping("/search")
-	public String search_result(@ModelAttribute("keyword") String keyword) {
+	public String search_result(@ModelAttribute("keyword") String keyword, Model model, 
+								HttpSession session, SearchVO search) {
 		System.out.println("검색결과 페이지 요청 : /search?keyword="+keyword);
+		
+		search.setKeyword(keyword);
+		System.out.println(search);
+		List<ItemVO> list = itemservice.getItemList(search);
+		model.addAttribute("items", list);		
+		
+		if(session.getAttribute("location") != null) {
+			session.setAttribute("location",session.getAttribute("location"));
+			search.setLocation((String)session.getAttribute("location"));
+			
+			List<ItemVO> locationlist = itemservice.getItemList(search);
+			model.addAttribute("items", locationlist);			
+		}
+				
 		return "item/search";
 	}
 
+	//지역설정 처리
 	@GetMapping("/location")
-	public String locationChoice(@ModelAttribute("location") String location, HttpSession session) {
+	public String locationChoice(@ModelAttribute("location") String location, HttpSession session,
+								SearchVO search, Model model) {
 		if(location != "") {
-			session.setAttribute("location", location);
-		}				
+			session.setAttribute("location", location); //"탄현동"이라는 값을 세션 location으로 등록
+			System.out.println(session.getAttribute("location"));
+			
+			search.setLocation(location); //searchVO에 location값을 "탄현동"으로 셋팅
+			List <ItemVO> locationlist = itemservice.getItemList(search);
+			model.addAttribute("items", locationlist);			
+		}
 		return "redirect:/";
 	}
 	
+	//지역설정 재설정 처리
 	@GetMapping("/reset")
 	public ModelAndView reset(HttpSession session) {
 		if(session.getAttribute("location") != null) {
 			session.invalidate();
 		}		
 		return new ModelAndView("redirect:/");
+	}
+	
+	//마이페이지 요청 처리
+	@GetMapping("/mypage")
+	public String mypage() {
+		System.out.println("마이페이지 요청");
+		return "mypage/mypage";
 	}
 	
 }	

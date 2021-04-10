@@ -32,6 +32,8 @@ public class ItemService implements IItemService{
 		}else { //첫번째 체크박스 체크O
 			if(item.getItemSecadd()==null) { //두번째 체크X
 				item.setItemSecadd("null"); //두번째는 null
+			}else { //두번째도 체크O
+				item.setItemSecadd(item.getItemSecadd());
 			}
 		}
 		System.out.println(item.toString());
@@ -45,8 +47,8 @@ public class ItemService implements IItemService{
 	}
 
 	@Override
-	public List<ItemVO> getItemList() {
-		List<ItemVO> list = mapper.getItemList();
+	public List<ItemVO> getItemList(SearchVO search) {
+		List<ItemVO> list = mapper.getItemList(search);
 
 		//1일 이내 신규글 new마크처리
 		for(ItemVO item:list) {
@@ -66,6 +68,23 @@ public class ItemService implements IItemService{
 
 	@Override
 	public void update(ItemVO item) {
+		if(item.getItemPriceOption()!=null) {
+			item.setItemPriceOption("y");
+		}else {
+			item.setItemPriceOption("n");
+		}
+		
+		if(item.getItemFiradd()==null) { //첫번째 체크박스 체크X			
+			if(item.getItemSecadd()!=null) { //두번째만 체크햇을때
+				item.setItemFiradd(item.getItemSecadd()); //두번째 주소를 첫번째에 저장 
+				item.setItemSecadd("null");  //두번째는 null
+			}
+		}else { //첫번째 체크박스 체크O
+			if(item.getItemSecadd()==null) { //두번째 체크X
+				item.setItemSecadd("null"); //두번째는 null
+			}
+		}
+		System.out.println("서비스 처리 후 :"+item.toString());
 		mapper.update(item);
 	}
 
@@ -73,5 +92,34 @@ public class ItemService implements IItemService{
 	public void delete(int itemNo) {
 		mapper.delete(itemNo);
 	}
+
+	@Override
+	public MemberVO getWriterOne(int memNo) {
+		return mapper.getWriterOne(memNo);
+	}
+
+	@Override
+	public List<ItemVO> getmemItem(int memNo) {
+		return mapper.getmemItem(memNo);
+	}
+
+	/*
+	@Override
+	public List<ItemVO> CategorySelect(String itemCategory) {
+		return mapper.CategorySelect(itemCategory);
+	}
+
+	@Override
+	public List<ItemVO> keywordItem(SearchVO keyword) {
+		keyword.setKeyword("%"+ keyword.getKeyword() + "%");
+		return mapper.keywordItem(keyword);
+	}
+
+	@Override
+	public List<ItemVO> locationItem(SearchVO location) {
+		location.setLocation("%"+ location.getLocation() + "%");
+		return mapper.locationItem(location);
+	}
+	*/
 
 }

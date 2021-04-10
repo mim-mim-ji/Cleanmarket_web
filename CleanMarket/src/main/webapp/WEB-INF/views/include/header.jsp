@@ -61,32 +61,23 @@
           </li>
           
           <li class="nav-item dropdown">
-            <a class="nav-link js-scroll-trigger dropdown-toggle" data-toggle="dropdown">카테고리</a>
-            <div class="dropdown-menu music-menu"> 
-            
-              <div class="dropdown dropright">            
-		        <a class="dropdown-item dropdown-toggle music-tap" data-toggle="dropdown">여성의류</a>   
-		      </div>
-		      
-		      <div class="dropdown dropright">            
-		        <a class="dropdown-item dropdown-toggle music-tap" data-toggle="dropdown">남성의류</a>
-			    
-		      </div>
-		      
-		      <div class="dropdown dropright">            
-		        <a class="dropdown-item dropdown-toggle music-tap" data-toggle="dropdown">신발</a>
-		      </div>
-		      
-		      <div class="dropdown dropright">            
-		        <a class="dropdown-item dropdown-toggle music-tap" data-toggle="dropdown">모자/인형/가방</a>		    
-		      </div>      	   
+            <a class="nav-link js-scroll-trigger dropdown-toggle"  data-toggle="dropdown">카테고리</a>
+            <div class="dropdown-menu" id="category-select">          
+		        <input type="button"  name="category" value="여성의류" class="dropdown-item dropdown-toggle" data-toggle="dropdown">
+          
+		        <input type="button"  name="category" value="남성의류" class="dropdown-item dropdown-toggle" data-toggle="dropdown">
+		        
+		        <input type="button"  name="category" value="신발" class="dropdown-item dropdown-toggle" data-toggle="dropdown">	
+		        
+		        <input type="button"  name="category" value="모자/인형/가방" class="dropdown-item dropdown-toggle" data-toggle="dropdown">
+		        	
 		    </div>
           </li>
           <c:if test="${login == null}" >
           	<li class="nav-item">
             	<a class="nav-link js-scroll-trigger" href="<c:url value='/login' />">LOGIN</a>
          	</li>
-         </c:if>
+          </c:if>
           <c:if test="${login == null}" >
           	<li class="nav-item">
             	<a class="nav-link js-scroll-trigger" href="<c:url value='/join_type_select' />">JOIN</a>
@@ -94,7 +85,7 @@
           </c:if>
           <c:if test="${login != null}" >
 	          <li class="nav-item">
-	            <a class="nav-link js-scroll-trigger" href="#">MYPAGE</a>
+	            <a class="nav-link js-scroll-trigger" href="<c:url value='/mypage'/>">MYPAGE</a>
 	          </li>
 	          <li class="nav-item">
 	            <a class="nav-link js-scroll-trigger" href="/cleanmarket/logout" onclick="return confirm('로그아웃 하시겠습니까?')">LOGOUT</a>
@@ -112,5 +103,17 @@
       </div>
     </div>
   </nav><br><br>
+  
+  <script>
+  		$(function() {
+			
+  			//카테고리 버튼 눌렀을 때 처리
+  			$("#category-select .dropdown-toggle").click(function() {
+  				let category = $(this).val();
+  				location.href="/cleanmarket/item/category?category=" + category;
+  			});			
+		})
+  
+  </script>
   
   <%@ include file="../include/search_modal.jsp" %> 

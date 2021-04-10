@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="com.spring.cleanmarket.reply.repository.IReplyMapper">
+	<!-- DB컬럼명과 VO클래스의 필드명이 다르므로 셋팅 -->
+	<resultMap type="com.spring.cleanmarket.reply.model.ReplyVO" id="ReplyMap">
+		<id property="repNo" column="rep_no" />
+		<result property="qnaNo" column="qna_no" />
+		<result property="repContent" column="rep_content" />
+		<result property="repWriter" column="rep_writer" />
+		<result property="repRegdate" column="rep_regdate" />
+	</resultMap>
+	
+	<insert id="replywrite">
+		insert into reply
+		(rep_no,qna_no,rep_content,rep_writer)
+		values 
+		(rep_seq.nextval,#{qnaNo},#{repContent},#{repWriter})
+	</insert>
+	
+	<update id="replyupdate">
+		update reply
+		set rep_content=#{repContent}
+		where rep_no=#{repNo}
+	</update>
+	
+	<delete id="replydelete">
+		delete from reply
+		where rep_no = #{repNo}
+	</delete>
+
+	<select id="getreplyList" resultMap="ReplyMap">
+		select * from reply
+		where qna_no = #{qnaNo}
+		order by rep_no ASC
+	</select>
+
+</mapper>

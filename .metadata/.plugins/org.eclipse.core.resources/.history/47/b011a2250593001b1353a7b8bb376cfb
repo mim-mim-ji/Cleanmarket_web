@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="com.spring.cleanmarket.item.repository.IItemMapper">
+
+<!-- DB컬럼명과 VO클래스의 필드명이 다르므로 셋팅 -->
+	<resultMap type="com.spring.cleanmarket.item.model.ItemVO" id="ItemMap">
+		<id property="itemNo" column="item_no"/>
+		<result property="memNo" column="mem_no"/>
+		<result property="itemTitle" column="item_title"/>
+		<result property="itemCategory" column="item_category"/>
+		<result property="itemContent" column="item_content"/>
+		<result property="itemPrice" column="item_price"/>
+		<result property="itemPriceOption" column="item_price_option"/>
+		<result property="itemFiradd" column="item_firadd"/>
+		<result property="itemSecadd" column="item_secadd"/>
+		<result property="itemState" column="item_state"/>
+		<result property="itemRegdate" column="item_regdate"/>
+		<result property="itemViewCnt" column="item_view_cnt"/>		
+		<result property="itemHeartCnt" column="item_heart_cnt"/>		
+	</resultMap>
+	
+	<!-- DB컬럼명과 VO클래스의 필드명이 다르므로 셋팅 -->
+	<resultMap type="com.spring.cleanmarket.member.model.MemberVO" id="MemberMap">
+		<id property="memNo" column="mem_no"/>
+		<result property="memID" column="mem_id"/>
+		<result property="memPassword" column="mem_password"/>
+		<result property="memName" column="mem_name"/>
+		<result property="memPhone" column="mem_phone"/>
+		<result property="memFiradd" column="mem_firadd"/>
+		<result property="memSecadd" column="mem_secadd"/>
+		<result property="storeName" column="store_name"/>
+		<result property="memRegdate" column="mem_regdate"/>
+		<result property="memType" column="mem_type"/>		
+	</resultMap>
+	
+
+	<insert id="write">
+		insert into item
+		(item_no,mem_no,item_title,item_category,item_content,
+		item_price,item_price_option,item_firadd,item_secadd)
+		values(item_seq.nextval,#{memNo},#{itemTitle},#{itemCategory},#{itemContent},
+		#{itemPrice},#{itemPriceOption},#{itemFiradd},#{itemSecadd})
+			
+	</insert>
+	
+	<select id="selectOne" resultMap="ItemMap">
+		select * from item
+		where item_no=#{itemNo}
+	</select>
+	
+	
+	<!-- 중복되는 동적 SQL문에 대한 처리 -->
+	<sql id="category">
+		<if test="category != null">
+			where item_category = #{itemCategory}
+		</if>		
+	</sql>
+	<sql id="keyword">
+		<!-- 동적 SQL 구문 -->
+		<if test="keyword != null">
+			where item_title LIKE  '%' || #{keyword} || '%'
+			OR item_content LIKE '%' || #{keyword} || '%'
+			OR item_firadd LIKE '%' || #{keyword} || '%'
+			OR item_secadd LIKE '%' || #{keyword} || '%'
+		</if>
+	</sql>
+	<sql id="location">
+		<if test="location != null">
+			where item_firadd Like '%' || #{location} || '%'
+			OR item_secadd Like '%' || #{location} || '%'
+		</if>
+	</sql>
+	
+	
+	
+	<select id="getItemList" resultMap="ItemMap">
+		select * from item
+		<include refid="search" />
+		<include refid="location" />
+		<include refid="category" />
+		order by item_no DESC
+	</select>
+	
+	<update id="updateViewCnt">
+		update item
+		set item_view_cnt=item_view_cnt+1
+		where item_no=#{itemNo}
+	</update>
+
+	<update id="update">
+		update item set item_title=#{itemTitle},item_category=#{itemCategory},
+						item_content=#{itemContent},item_price=#{itemPrice},item_price_option=#{itemPriceOption},
+						item_firadd=#{itemFiradd},item_secadd=#{itemSecadd}, item_state=#{itemState}
+		where item_no=#{itemNo}
+	</update>
+	
+	<delete id="delete">
+		delete from item where item_no=#{itemNo}
+	</delete>
+	
+	<update id="updateHeartCnt">
+		update item
+		set item_heart_cnt=(select count(*) from heart where item_no = #{itemNo})
+		where item_no=#{itemNo}
+	</update>
+	
+	<select id="getWriterOne" resultMap="MemberMap">
+		select * from member
+		where mem_no=#{memNo}
+	</select>
+	
+	<select id="getmemItem" resultMap="ItemMap">
+		select * from item
+		where mem_no = #{memNo}
+		order by item_no DESC
+	</select>
+	
+	
+	
+	
+	<!--  
+	<select id="CategorySelect" resultMap="ItemMap">
+		select * from item
+		where item_category=#{itemCategory}
+		order by item_no DESC
+	</select>
+	
+	<select id="keywordItem" resultMap="ItemMap">
+		select * from item
+		where item_title LIKE #{keyword}
+		OR item_content LIKE #{keyword}
+		OR item_firadd LIKE #{keyword}
+		OR item_secadd LIKE #{keyword}
+		order by item_no DESC
+	</select>
+	
+	<select id="locationItem" resultMap="ItemMap">
+		select * from item
+		where item_firadd Like #{location}
+		OR item_secadd Like #{location}
+		order by item_no DESC
+	</select>
+	-->
+	
+</mapper>

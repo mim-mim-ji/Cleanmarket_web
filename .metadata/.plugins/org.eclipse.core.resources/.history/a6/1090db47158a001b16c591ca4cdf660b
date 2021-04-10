@@ -1,5 +1,0 @@
-package com.spring.cleanmarket.item.service;
-
-public interface IItemService {
-
-}

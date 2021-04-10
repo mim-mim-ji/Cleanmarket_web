@@ -72,7 +72,7 @@ ul {
 							<li class="sc-gxbSSY bphXry">
 								<div class="sc-bXopBW gxnpCB">제목<span>*</span>
 								</div>
-								<div class="sc-hhaNoI buTCOV">
+								<div class="sc-hhaNoI buTCOV" style="padding-left: 10px">
 									<div class="sc-hokXgN hcrSpf">
 										<div class="sc-gneEKw dBgbVT">
 											<input type="text" name="itemTitle" class="form-control tooltipstered" 
@@ -84,7 +84,7 @@ ul {
 							<li class="sc-gxbSSY bphXry"><div class="sc-bXopBW DTAYM">
 									카테고리<span>*</span>
 								</div>
-								<div class="sc-hhaNoI buTCOV">
+								<div class="sc-hhaNoI buTCOV" style="padding-left: 10px">
 									<div class="sc-hXhGGG XXBMH">
 										<div id="itemCategory">
 											<input type="radio" name="itemCategory" value="여성의류" checked>여성의류<br>
@@ -97,7 +97,7 @@ ul {
 							<li class="sc-gxbSSY bphXry"><div class="sc-bXopBW gxnpCB">
 									거래지역<span>*</span>
 								</div>
-								<div class="sc-hhaNoI buTCOV">
+								<div class="sc-hhaNoI buTCOV" style="padding-left: 10px">
 									<div class="sc-cIsjWt etcNyM" >																		
 										<label> <input name="itemFiradd" readonly
 											type="checkbox" value="${login.memFiradd }" checked> 주소1 : ${login.memFiradd }
@@ -111,8 +111,8 @@ ul {
 
 
 							<li class="sc-gxbSSY bphXry"><div class="sc-bXopBW edUXQu">설명</div>
-								<div class="sc-hhaNoI buTCOV">
-									<textarea name="itemContent" placeholder="상품 설명을 입력해주세요." rows="6"
+								<div class="sc-hhaNoI buTCOV" style="padding-left: 10px">
+									<textarea name="itemContent" placeholder="상품 설명을 입력해주세요." rows="6" cols="20"
 										class="form-control tooltipstered" required></textarea>
 									<div class="sc-eqGige gTqRab">
 										<div class="sc-kUQWMX giYAKW">0/2000</div>
@@ -120,12 +120,11 @@ ul {
 								</div></li>
 
 							<li class="sc-gxbSSY bphXry"><div class="sc-bXopBW gxnpCB">
-									가격<span>*</span>
-								</div>
-								<div class="sc-hhaNoI buTCOV">
+									가격<span>*</span></div>
+								<div class="sc-hhaNoI buTCOV" style="padding-left: 10px">
 									<div class="sc-fxMfqs hGKuJO">
 										<input type="text" name="itemPrice" placeholder="숫자만 입력해주세요."
-											class="form-control tooltipstered" required>원
+											class="form-control tooltipstered" required>
 									</div>
 									<div class="sc-eIvgmF fxEngV">
 										<div class="sc-jklikK htQzEY">

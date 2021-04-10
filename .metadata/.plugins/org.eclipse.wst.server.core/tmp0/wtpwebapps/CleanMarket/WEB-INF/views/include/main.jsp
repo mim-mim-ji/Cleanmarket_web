@@ -12,7 +12,7 @@
 			</c:if>
 			<c:if test="${location!=null }">
 				<a data-toggle="modal" data-target="#location" style="border-radius: 0px; color: #404040; margin-top: 20px;"><i class="fas fa-map-marker-alt">&nbsp;${location}</i></a>&nbsp; &nbsp;
-				<a href="<c:url value='/cleanmarket/reset'/>" style="border-radius: 0px; color: #404040; margin-top: 20px;"><i class="fas fa-redo">&nbsp; 재설정</i></a>
+				<a href="<c:url value='/reset'/>" style="border-radius: 0px; color: #404040; margin-top: 20px;"><i class="fas fa-redo">&nbsp; 재설정</i></a>
 			</c:if>
 		</div>
 			

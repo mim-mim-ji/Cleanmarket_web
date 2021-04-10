@@ -1,0 +1,5 @@
+package com.spring.cleanmarket.mypage.controller;
+
+public class MypageController {
+
+}

@@ -114,3 +114,39 @@ function setImage(event) {
 	        } 
 	    }
 	});
+	
+	
+	
+	
+		
+		
+		//하트버튼 클릭 이벤트
+		const itemHeartCnt = $('#itemHeartCnt');
+		itemHeartCnt.click(function() {
+			if(${login==null}){
+				alert("로그인 먼저 해주세요");
+				location.href="/cleanmarket/login";
+			} else {
+				
+				const heart = {
+		    			memNo : ${login.memNo},
+		    			itemNo : $('#itemNo').val
+		    	};
+				
+				$.ajax({
+					url: "/item/itemHeartCntUpdate",
+	                type: "POST",
+	                headers: {
+	    				"Content-type" : "application/json"
+	    			},
+	    			dataType: "text",
+	    			data: JSON.stringify(heart), //자바스크립객체를 json으로 변환
+	                success: function (result)  {
+						console.log("통신 성공: "+result);
+					},
+					error: function() {
+						console.log("통신 실패");
+					}
+				});//ajax끝
+			}
+		}); //클릭이벤트 끝
